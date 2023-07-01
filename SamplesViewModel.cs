@@ -51,11 +51,14 @@
             List<SalesOrder> sales = SalesOrderRepository.GetAll();
 
             // Write Query Syntax Here
-
+            (from prod in products
+             let tmp = prod.TotalSales = sales.Where(sale => sale.ProductID == prod.ProductID)
+                 .Sum(sale => sale.LineTotal)
+             select prod).ToList();
 
             return products;
         }
-        #endregion
+        #endregion  
 
         #region ForEachSubQueryMethod
         /// <summary>

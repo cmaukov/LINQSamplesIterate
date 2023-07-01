@@ -4,7 +4,7 @@
 SamplesViewModel vm = new();
 
 // Call Sample Method
-var result = vm.ForEachMethod();
+var result = vm.ForEachSubQueryQuery();
 
 // Display Results
 vm.Display(result);
