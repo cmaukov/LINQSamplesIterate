@@ -72,7 +72,9 @@
             List<SalesOrder> sales = SalesOrderRepository.GetAll();
 
             // Write Method Syntax Here
-
+            products.ForEach(prod => 
+                prod.TotalSales = sales.Where(sale => sale.ProductID == prod.ProductID)
+                    .Sum(sale => sale.LineTotal));
 
             return products;
         }
