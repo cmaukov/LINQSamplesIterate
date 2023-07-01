@@ -98,7 +98,9 @@
 
             var list = (from prod in products
                         let tmp = prod.TotalSales = CalculateTotalSalesForProduct(prod, sales)
-                        select prod).ToList();
+                        select prod).Where(prod => prod.TotalSales > 0)
+
+                .ToList();
 
 
             return list;
