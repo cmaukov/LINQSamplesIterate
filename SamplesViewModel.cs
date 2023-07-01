@@ -72,7 +72,7 @@
             List<SalesOrder> sales = SalesOrderRepository.GetAll();
 
             // Write Method Syntax Here
-            products.ForEach(prod => 
+            products.ForEach(prod =>
                 prod.TotalSales = sales.Where(sale => sale.ProductID == prod.ProductID)
                     .Sum(sale => sale.LineTotal));
 
@@ -96,10 +96,12 @@
 
             // Write Query Syntax Here
 
+            var list = (from prod in products
+                        let tmp = prod.TotalSales = CalculateTotalSalesForProduct(prod, sales)
+                        select prod).ToList();
 
 
-
-            return null;
+            return list;
         }
         #endregion
 
