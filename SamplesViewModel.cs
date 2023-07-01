@@ -33,7 +33,7 @@
             List<SalesOrder> sales = SalesOrderRepository.GetAll();
 
             // Write Method Syntax Here
-
+            sales.ForEach(sale => sale.LineTotal = sale.OrderQty * sale.UnitPrice);
 
             return sales;
         }
